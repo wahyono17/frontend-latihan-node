@@ -1,5 +1,5 @@
 import App from './App'
-import LandingPage from './components/marketing/LandingPage'
+// import LandingPage from './components/marketing/LandingPage'
 import About from './components/marketing/About'
 import Login from './components/auth/Login'
 import Logout from './components/auth/Logout'
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: LandingPage
+    // component: LandingPage
   },
   {
     path: '/todo',
