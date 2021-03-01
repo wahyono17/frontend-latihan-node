@@ -66,7 +66,7 @@ export default {
     margin-bottom: 16px;
   }
 
-  .form-control {
+  .form-control-manual {
     margin-bottom: 24px;
   }
 

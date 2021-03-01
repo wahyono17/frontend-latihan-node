@@ -3,17 +3,17 @@
     <h2 class="login-heading">Login</h2>
     <form action="#" @submit.prevent="login">
 
-      <div class="form-control">
+      <div class="form-control-manual">
         <label for="email">Username/Email</label>
         <input type="email" name="email" id="email" class="login-input" v-model="email">
       </div>
 
-      <div class="form-control mb-more">
+      <div class="form-control-manual mb-more">
         <label for="password">Password</label>
         <input type="password" name="password" id="password" class="login-input" v-model="password">
       </div>
 
-      <div class="form-control">
+      <div class="form-control-manual">
         <button type="submit" class="btn-submit">Login</button>
       </div>
 
@@ -37,7 +37,8 @@ export default {
         password: this.password,
       })
         .then(response => {
-          this.$router.push({ name: 'todo' })
+          // console.log(response.data.token)
+          this.$router.push({ name: 'productall' })
         })
     }
   }
