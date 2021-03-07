@@ -1,16 +1,22 @@
 <template>
-    <ul>
-        <li v-for="item in productAll" :key="item._id">
-            <div class="card" style="width: 18rem;">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+    <div>
+    <div class="row">
+        <div v-for="item in productAll" :key="item._id" class="col-md-3 col-xs-6">
+            <div class="card">
+            <img v-bind:src="item.image[0].filename" />
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 class="card-title">{{item.name}}</h5>
+                <p>{{item.description}}</p>
+                <p>{{item.unit}}</p>
+                <p>{{item.fprice}}</p>
+                <p>{{item.quantity}}</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+
+    </div>
 </template>
 
 <script>
@@ -31,3 +37,35 @@ export default {
     },
 }
 </script>
+
+<style lang="">
+/* @media (min-width: 320px) {
+    .col-xs-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .order-xs-6 {
+      order: 6;
+    }
+    .offset-xs-6 {
+      margin-left: 50%;
+    }
+  } */
+
+/* @media (min-width: 768px) {
+    .col-md {
+      flex-basis: 0;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    .col-md-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .col-md-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  } */
+
+</style>
