@@ -1,22 +1,20 @@
 <template>
     <div class="container-fluid">
     <div class="row">
-        <div v-for="item in productAll" :key="item._id" class="col-md-3 col-xs-6">
-            <div class="card card-buttom">
+        <div v-for="item in productAll" :key="item._id" class="col-md-2 col-xs-6">
+            <div class="card card-margin-right card-buttom">
             <img v-bind:src="item.image[0].filename" />
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
-                <p>{{item.description}}</p>
-                <p>{{item.unit}}</p>
-                <p>{{item.fprice}}</p>
-                <p>{{item.quantity}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p>
+                  {{item.description}}<br>
+                  <span class="font-weight-bold">{{item.fprice}} / {{item.unit}}<br></span>
+                  stock : {{item.quantity}}<br>
+                </p>
             </div>
             </div>
         </div>
     </div>
-
-
     </div>
 </template>
 
@@ -40,6 +38,7 @@ export default {
 </script>
 
 <style lang="">
+
 @media (min-width: 320px) {
     .col-xs-6 {
       flex: 0 0 50%;
@@ -67,10 +66,22 @@ export default {
       flex: 0 0 25%;
       max-width: 25%;
     }
+    .col-md-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
   }
 
   .card-buttom {
       margin-bottom: 15px;
+  }
+
+  .card-margin-right {
+    margin-right: -10px;
+  }
+
+  p.small {
+    line-height: 100%;
   }
 
 </style>
