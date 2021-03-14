@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
-    <div class="row">
+    <div class="row" v-if="productAllData">
         <div v-for="item in productAll" :key="item._id" class="col-md-2 col-xs-6">
-            <div class="card card-margin-right card-buttom">
+            <div class="card card-margin-right card-buttom" @click="clickProductById(item._id)">
             <img v-bind:src="item.image[0].filename" />
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
@@ -15,24 +15,41 @@
             </div>
         </div>
     </div>
+    <product-by-id :id="id" v-if="productByIdData"></product-by-id>
     </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import ProductById from './ProductById.vue';
+
 
 export default {
     name:   'product-all',
     components:{
+        ProductById
 
     },
+    data(){
+      return {
+        productByIdData:false,productAllData:true,id:"0"
+      }
+    },
     created(){ //pertama kali component ini di click maka akan panggil untuk menerima list todo
-    this.$store.dispatch('retreiveProduct').productModule // kalau dispatch di store harus di terima di actions
+      this.$store.dispatch('retreiveProduct').productModule // kalau dispatch di store harus di terima di actions
     },
     computed:{
         ...mapGetters({
             productAll:'productAll'
         }),
+    },
+    methods: {
+      clickProductById(id){
+        this.productByIdData = true
+        this.productAllData = false
+        this.id = id
+        // this.$store.dispatch('receiveId',id).productModule//diterima diaction karena ansyncronous
+      }
     },
 }
 </script>

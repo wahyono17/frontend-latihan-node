@@ -1,12 +1,29 @@
 <template>
     <div>
-        <p>hello word</p>
+        <h1>{{singleProduct.name}}</h1>
+
     </div>
 </template>
 
 <script>
-export default {
+import { mapState, mapGetters } from 'vuex';
 
+export default {
+    name:"product-byid",
+    props:{
+        id:{
+            type:String
+        }
+    },
+    created() {
+        console.log(this.id)
+        this.$store.dispatch('retreiveSingleProduct',this.id).productModule
+    },
+    computed:{
+        ...mapGetters({
+            singleProduct:'getSingleProduct'
+        }),
+    },
 }
 </script>
 
