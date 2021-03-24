@@ -1,4 +1,5 @@
 import ProductAll from './components/product/ProductAll.vue'
+import ProductById from './components/product/ProductById.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -16,6 +17,11 @@ const routes = [
     path: '/productall',
     name:'productall',
     component:ProductAll,
+  },
+  {
+    path:'productall/:id',
+    name:'productbyid',
+    component:ProductById,
   },
   {
     path: '/',

@@ -15,7 +15,9 @@
             </div>
         </div>
     </div>
-    <product-by-id :id="id" v-if="productByIdData"></product-by-id>
+    <product-by-id :id="id" v-if="productByIdData">
+      <router-link :to="{name: 'productbyid'}"></router-link>
+    </product-by-id>
     </div>
 </template>
 
