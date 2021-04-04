@@ -34,7 +34,7 @@ export default {
     //   context.commit('receiveId',id)
     // },
     retreiveSingleProduct(context,id){
-      console.log(id)
+      // console.log(id)
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + context.rootState.token
       axios.get('/products/' + id)
         .then(response=>{

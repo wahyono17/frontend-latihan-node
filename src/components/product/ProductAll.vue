@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
-    <div class="row" v-if="productAllData">
+    <div class="row">
         <div v-for="item in productAll" :key="item._id" class="col-md-2 col-xs-6">
-            <div class="card card-margin-right card-buttom" @click="clickProductById(item._id)">
+            <div class="card card-margin-right card-buttom">
             <img v-bind:src="item.image[0].filename" />
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
@@ -11,30 +11,28 @@
                   <span class="font-weight-bold">{{item.fprice}} / {{item.unit}}<br></span>
                   stock : {{item.quantity}}<br>
                 </p>
+                <router-link class="btn btn-primary" :to="`/product/${item._id}`">Detail</router-link>
             </div>
             </div>
         </div>
     </div>
-    <product-by-id :id="id" v-if="productByIdData">
-      <router-link :to="{name: 'productbyid'}"></router-link>
-    </product-by-id>
     </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import ProductById from './ProductById.vue';
+// import ProductById from './ProductById.vue';
 
 
 export default {
     name:   'product-all',
     components:{
-        ProductById
+        // ProductById
 
     },
     data(){
       return {
-        productByIdData:false,productAllData:true,id:"0"
+        // productByIdData:false,productAllData:true,id:"0"
       }
     },
     created(){ //pertama kali component ini di click maka akan panggil untuk menerima list todo
@@ -46,12 +44,12 @@ export default {
         }),
     },
     methods: {
-      clickProductById(id){
-        this.productByIdData = true
-        this.productAllData = false
-        this.id = id
-        // this.$store.dispatch('receiveId',id).productModule//diterima diaction karena ansyncronous
-      }
+      // clickProductById(id){
+      //   this.productByIdData = true
+      //   this.productAllData = false
+      //   this.id = id
+      //   // this.$store.dispatch('receiveId',id).productModule//diterima diaction karena ansyncronous
+      // }
     },
 }
 </script>
