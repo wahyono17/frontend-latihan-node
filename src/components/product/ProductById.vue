@@ -20,7 +20,7 @@
                             stock: {{singleProduct.quantity}} {{singleProduct.unit}}
                         </p>
 
-                        <button type="button" class="btn btn-primary">+ Keranjang</button>
+                        <router-link type="button" class="btn btn-primary" :to="`/product/qty`">+ Keranjang</router-link>
                         <button type="button" class="btn btn-secondary">Beli langsung</button>
                     </div>
                 </div>
@@ -78,8 +78,6 @@ export default {
   }
 
   /* reset pading default bootstarp */
-  /* .col-md,
-  .col-md-8, */
   .col-md-3,
   .col-sm-3{
     padding-right: 5px;
