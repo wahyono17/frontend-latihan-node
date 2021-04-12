@@ -1,5 +1,6 @@
 import ProductAll from './components/product/ProductAll.vue'
 import ProductById from './components/product/ProductById.vue'
+import BasketQuantity from './components/product/BasketQuantity.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -19,9 +20,15 @@ const routes = [
     component:ProductAll,
   },
   {
-    path: '/productall/:id',
-    name: 'productbyid',
+    path:'/product/:id',
+    name:'productbyid',
     component:ProductById,
+    props: true,
+  },
+  {
+    path: '/product/qty/test',
+    name:'basket-quantty',
+    component:BasketQuantity,
   },
   {
     path: '/',

@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid">
-    <div class="row" v-if="productAllData">
-        <div v-for="item in productAll" :key="item._id" class="col-md-2 col-xs-6">
-            <div class="card card-margin-right card-buttom" @click="clickProductById(item._id)">
+    <div class="row">
+        <div v-for="item in productAll" :key="item._id" class="col-md col-md-2 col-xs-6">
+            <div class="card">
             <img v-bind:src="item.image[0].filename" />
             <div class="card-body">
                 <h5 class="card-title">{{item.name}}</h5>
@@ -11,28 +11,27 @@
                   <span class="font-weight-bold">{{item.fprice}} / {{item.unit}}<br></span>
                   stock : {{item.quantity}}<br>
                 </p>
+                <router-link class="btn btn-primary" :to="`/product/${item._id}`">Detail</router-link>
             </div>
             </div>
         </div>
     </div>
-    <product-by-id :id="id" v-if="productByIdData"></product-by-id>
     </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import ProductById from './ProductById.vue';
+// import ProductById from './ProductById.vue';
 
 
 export default {
     name:   'product-all',
     components:{
-        ProductById
-
+        // ProductById
     },
     data(){
       return {
-        productByIdData:false,productAllData:true,id:"0"
+        // productByIdData:false,productAllData:true,id:"0"
       }
     },
     created(){ //pertama kali component ini di click maka akan panggil untuk menerima list todo
@@ -44,12 +43,12 @@ export default {
         }),
     },
     methods: {
-      clickProductById(id){
-        this.productByIdData = true
-        this.productAllData = false
-        this.id = id
-        // this.$store.dispatch('receiveId',id).productModule//diterima diaction karena ansyncronous
-      }
+      // clickProductById(id){
+      //   this.productByIdData = true
+      //   this.productAllData = false
+      //   this.id = id
+      //   // this.$store.dispatch('receiveId',id).productModule//diterima diaction karena ansyncronous
+      // }
     },
 }
 </script>
@@ -61,44 +60,25 @@ export default {
       flex: 0 0 50%;
       max-width: 50%;
     }
-    .order-xs-6 {
-      order: 6;
-    }
-    .offset-xs-6 {
-      margin-left: 50%;
-    }
   }
 
 @media (min-width: 768px) {
-    .col-md {
-      flex-basis: 0;
-      flex-grow: 1;
-      max-width: 100%;
-    }
-    .col-md-4 {
-      flex: 0 0 33.3333333333%;
-      max-width: 33.3333333333%;
-    }
-    .col-md-3 {
-      flex: 0 0 25%;
-      max-width: 25%;
-    }
     .col-md-2 {
       flex: 0 0 16.6666666667%;
       max-width: 16.6666666667%;
     }
   }
 
-  .card-buttom {
-      margin-bottom: 15px;
+  .row {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .card-margin-right {
-    margin-right: -10px;
-  }
-
-  p.small {
-    line-height: 100%;
+  /* reset pading default bootstarp */
+  .col-xs-6,
+  .col-md-2{
+    padding-right: 0;
+    padding-left: 0;
   }
 
 </style>
